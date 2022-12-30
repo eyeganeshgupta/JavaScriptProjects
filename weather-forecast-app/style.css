@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /*background: linear-gradient(to right, #061161, #780206);*/
+
+    /*background: linear-gradient(to right, #b31217, #e52d27);*/
+    /*background: linear-gradient(to right, #6FB1FC, #4364F7, #0052D4);*/
+    /*background: linear-gradient(to right, #2C5364, #203A43, #0F2027);*/
+    /*background: linear-gradient(to right, #4286f4, #373B44);*/
+    /*background: linear-gradient(to right, #493240, #FF0099);*/
+
+    /*background: linear-gradient(to right, #240b36, #c31432);*/
+
+    /*background: linear-gradient(to right, #24243e, #302b63, #0f0c29);*/
+
+    /*background: linear-gradient(to right, #6f0000, #200122);*/
+
+    background: linear-gradient(to right, #2F0743, #41295a);
+    color: whitesmoke;
+    font-family: 'Acme', sans-serif;
+    font-size: larger;
+}
