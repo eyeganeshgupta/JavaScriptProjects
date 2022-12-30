@@ -1,4 +1,4 @@
-const apiKey = "06837e2c8b3ba1207c2bdd4fe02a2b44";
+const apiKey = "apiKey";
 let weatherEndPoint =
   "https://api.openweathermap.org/data/2.5/weather?appid=" +
   apiKey +
