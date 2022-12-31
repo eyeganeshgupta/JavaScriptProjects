@@ -21,8 +21,73 @@ body {
 
     /*background: linear-gradient(to right, #6f0000, #200122);*/
 
-    background: linear-gradient(to right, #2F0743, #41295a);
-    color: whitesmoke;
+    background: linear-gradient(to right, #2F0743, #41295a, #2F0743);
+    color: #defaf9;
     font-family: 'Acme', sans-serif;
-    font-size: larger;
+    font-size: 1.3em;
+}
+
+.weather-search {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    border: none !important;
+    color: inherit !important;
+    outline: none !important;
+}
+
+.weather-search::placeholder {
+    color: #fff;
+}
+
+.weather-city {
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.weather-day {
+    font-size: 1.55em;
+    font-weight: 400;
+}
+
+.weather-indicator::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.weather-indicator-humidity::before {
+    background-image: url(images/humidity.png);
+}
+
+.weather-indicator-wind::before {
+    background-image: url(images/wind.png);
+}
+
+.weather-indicator-pressure::before {
+    background-image: url(images/pressure.png);
+}
+
+.weather-image {
+    width: 210px;
+}
+
+.weather-temperature {
+    font-size: 1.70em;
+    font-weight: bold;
+}
+
+.weather-forecast-icon {
+    display: inline-block;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.weather-forecast-item {
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 10px;
 }
