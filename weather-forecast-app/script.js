@@ -15,7 +15,7 @@ let pressure = document.querySelector(".weather-indicator-pressure .value");
 
 let mainImage = document.querySelector(".weather-image");
 
-let temperature = document.querySelector("weather-temperature .value");
+let temperature = document.querySelector(".weather-temperature .value");
 
 let getWeatherByCityName = async (cityName) => {
   let endPointWithCityName = weatherEndPoint + "&q=" + cityName;
@@ -29,10 +29,45 @@ let getWeatherByCityName = async (cityName) => {
   }
 };
 
+let dayOfWeek = () => {
+  return new Date().toLocaleDateString("en-EN", { weekday: "long" });
+};
+
+let updateCurrentWeather = (weatherObj) => {
+  city.innerText = weatherObj.name;
+  day.innerText = dayOfWeek();
+  humidity.innerText = weatherObj.main.humidity;
+
+  let windDirection;
+  let degree = weatherObj.wind.deg;
+  if (degree > 45 && degree <= 135) {
+    windDirection = "East";
+  } else if (degree > 135 && degree <= 225) {
+    windDirection = "South";
+  } else if (degree > 225 && degree <= 315) {
+    windDirection = "West";
+  } else {
+    windDirection = "North";
+  }
+  wind.innerText = windDirection + ", " + weatherObj.wind.speed;
+
+  pressure.innerText = weatherObj.main.pressure;
+
+  temperature.innerText =
+    weatherObj.main.temp > 0
+      ? "+" + Math.round(weatherObj.main.temp)
+      : Math.round(weatherObj.main.temp);
+};
+
+let weatherForCity = async (city) => {
+  let weatherObj = await getWeatherByCityName(city);
+  console.log(weatherObj);
+  updateCurrentWeather(weatherObj);
+};
+
 searchBox.addEventListener("keydown", async (eventObj) => {
   if (eventObj.keyCode === 13) {
-    let weather = await getWeatherByCityName(searchBox.value);
-    console.log(weather);
+    weatherForCity(searchBox.value);
   }
 });
 
