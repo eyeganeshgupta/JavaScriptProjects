@@ -4,6 +4,10 @@ let weatherEndPoint =
   apiKey +
   "&units=metric";
 
+let foreCastEndPoint =
+  "https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=" +
+  apiKey;
+
 let searchBox = document.querySelector(".weather-search");
 
 let city = document.querySelector(".weather-city");
@@ -16,6 +20,31 @@ let pressure = document.querySelector(".weather-indicator-pressure .value");
 let mainImage = document.querySelector(".weather-image");
 
 let temperature = document.querySelector(".weather-temperature .value");
+
+let getForecastByCityID = async (cityId) => {
+  let endPoint = foreCastEndPoint + "&id=" + cityId;
+  let responseObj = await fetch(endPoint);
+  let forecastObj = await responseObj.json();
+  // console.log(forecastObj);
+  let forecastList = forecastObj.list;
+
+  let daily = [];
+
+  forecastList.forEach((object) => {
+    let dateStr = object.dt_txt;
+    dateStr = dateStr.replace(" ", "T");
+    let date = new Date(dateStr);
+    let hours = date.getHours();
+    if (hours === 12) {
+      daily.push(object);
+      console.log(object);
+    }
+  });
+
+  // console.log(daily);
+
+  return daily;
+};
 
 let getWeatherByCityName = async (cityName) => {
   let endPointWithCityName = weatherEndPoint + "&q=" + cityName;
@@ -61,8 +90,10 @@ let updateCurrentWeather = (weatherObj) => {
 
 let weatherForCity = async (city) => {
   let weatherObj = await getWeatherByCityName(city);
-  console.log(weatherObj);
+  // console.log(weatherObj);
   updateCurrentWeather(weatherObj);
+  let cityId = weatherObj.id;
+  let forecast = await getForecastByCityID(cityId);
 };
 
 searchBox.addEventListener("keydown", async (eventObj) => {
