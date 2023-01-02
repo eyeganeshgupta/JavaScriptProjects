@@ -21,6 +21,8 @@ let mainImage = document.querySelector(".weather-image");
 
 let temperature = document.querySelector(".weather-temperature .value");
 
+let forecastContainer = document.querySelector(".weather-forecast");
+
 let getForecastByCityID = async (cityId) => {
   let endPoint = foreCastEndPoint + "&id=" + cityId;
   let responseObj = await fetch(endPoint);
@@ -58,8 +60,10 @@ let getWeatherByCityName = async (cityName) => {
   }
 };
 
-let dayOfWeek = () => {
-  return new Date().toLocaleDateString("en-EN", { weekday: "long" });
+let dayOfWeek = (milliSeconds = new Date().getTime()) => {
+  return new Date(milliSeconds).toLocaleDateString("en-EN", {
+    weekday: "long",
+  });
 };
 
 let updateCurrentWeather = (weatherObj) => {
@@ -88,12 +92,42 @@ let updateCurrentWeather = (weatherObj) => {
       : Math.round(weatherObj.main.temp);
 };
 
+let updateForecast = (forecast) => {
+  forecastContainer.innerHTML = "";
+  let forecastItem = "";
+
+  forecast.forEach((dayObj) => {
+    let iconUrl =
+      "http://openweathermap.org/img/wn/" + dayObj.weather[0].icon + "@2x.png";
+
+    let eachDayTemperature =
+      dayObj.main.temp > 0
+        ? "+" + Math.round(dayObj.main.temp)
+        : Math.round(dayObj.main.temp);
+
+    let dayName = dayOfWeek(dayObj.dt * 1000);
+
+    forecastItem += `<div class="col">
+    <div class="card weather-forecast-item">
+        <img src="${iconUrl}" class="card-img-top weather-forecast-icon mt-3" alt="${dayObj.weather[0].description}">
+        <h3 class="card-title weather-forecast-day my-4">${dayName}</h3>
+        <p class="card-text weather-forecast-temperature mb-3">
+            <span class="value">${eachDayTemperature}</span> &deg;C
+        </p>
+    </div>
+</div>`;
+
+    forecastContainer.innerHTML = forecastItem;
+  });
+};
+
 let weatherForCity = async (city) => {
   let weatherObj = await getWeatherByCityName(city);
   // console.log(weatherObj);
   updateCurrentWeather(weatherObj);
   let cityId = weatherObj.id;
   let forecast = await getForecastByCityID(cityId);
+  updateForecast(forecast);
 };
 
 searchBox.addEventListener("keydown", async (eventObj) => {
