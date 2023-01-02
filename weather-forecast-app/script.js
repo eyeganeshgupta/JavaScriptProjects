@@ -8,6 +8,11 @@ let foreCastEndPoint =
   "https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=" +
   apiKey;
 
+let geocodingEndPoint =
+  "http://api.openweathermap.org/geo/1.0/direct?limit=5&appid=" +
+  apiKey +
+  "&q=";
+
 let searchBox = document.querySelector(".weather-search");
 
 let city = document.querySelector(".weather-city");
@@ -181,6 +186,20 @@ searchBox.addEventListener("keydown", async (eventObj) => {
   if (eventObj.keyCode === 13) {
     weatherForCity(searchBox.value);
   }
+});
+
+searchBox.addEventListener("input", async () => {
+  if (searchBox.value.length <= 2) {
+    return;
+  }
+
+  let endPoint = geocodingEndPoint + searchBox.value;
+  let response = await fetch(endPoint);
+  let responseObj = await response.json();
+  // console.log(responseObj);
+  responseObj.forEach((city) => {
+    console.log(`${city.name}, ${city.state}, ${city.country}`);
+  });
 });
 
 // getWeatherByCityName("Delhi");
