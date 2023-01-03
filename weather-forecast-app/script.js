@@ -15,6 +15,8 @@ let geocodingEndPoint =
 
 let searchBox = document.querySelector(".weather-search");
 
+let dataList = document.getElementById("suggestions");
+
 let city = document.querySelector(".weather-city");
 let day = document.querySelector(".weather-day");
 
@@ -176,6 +178,14 @@ let updateForecast = (forecast) => {
 let weatherForCity = async (city) => {
   let weatherObj = await getWeatherByCityName(city);
   // console.log(weatherObj);
+  if (weatherObj.cod === "404") {
+    Swal.fire({
+      title: "Not Found",
+      text: "Invalid Location",
+      icon: "error",
+    });
+    return;
+  }
   updateCurrentWeather(weatherObj);
   let cityId = weatherObj.id;
   let forecast = await getForecastByCityID(cityId);
@@ -197,11 +207,12 @@ searchBox.addEventListener("input", async () => {
   let response = await fetch(endPoint);
   let responseObj = await response.json();
   // console.log(responseObj);
+  dataList.innerHTML = "";
   responseObj.forEach((city) => {
-    console.log(`${city.name}, ${city.state}, ${city.country}`);
+    let option = document.createElement("option");
+    option.value = `${city.name}${city.state ? ", " + city.state : ""}, ${
+      city.country
+    }`;
+    dataList.appendChild(option);
   });
 });
-
-// getWeatherByCityName("Delhi");
-
-// getWeatherByCityName("Mumbai");
