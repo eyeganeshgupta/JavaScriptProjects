@@ -13,6 +13,11 @@ let geocodingEndPoint =
   apiKey +
   "&q=";
 
+let reverseGeocodingEndPoint =
+  "http://api.openweathermap.org/geo/1.0/reverse?limit=1&appid=" +
+  apiKey +
+  "&lat=";
+
 let searchBox = document.querySelector(".weather-search");
 
 let dataList = document.getElementById("suggestions");
@@ -46,12 +51,10 @@ let getForecastByCityID = async (cityId) => {
     let hours = date.getHours();
     if (hours === 12) {
       daily.push(object);
-      console.log(object);
+      // console.log(object);
     }
   });
-
   // console.log(daily);
-
   return daily;
 };
 
@@ -161,7 +164,7 @@ let updateForecast = (forecast) => {
 
     let dayName = dayOfWeek(dayObj.dt * 1000);
 
-    forecastItem += `<div class="col">
+    forecastItem += `<div class="col-md mb-3">
     <div class="card weather-forecast-item">
         <img src="${iconUrl}" class="card-img-top weather-forecast-icon mt-3" alt="${dayObj.weather[0].description}">
         <h3 class="card-title weather-forecast-day my-4">${dayName}</h3>
@@ -216,3 +219,42 @@ searchBox.addEventListener("input", async () => {
     dataList.appendChild(option);
   });
 });
+
+window.onload = () => {
+  let accurateObj = {
+    enableHighFrequency: true,
+    timeout: 5000,
+    maximumAge: 0,
+  };
+  navigator.geolocation.getCurrentPosition(
+    async (positionObj) => {
+      let coordinates = positionObj.coords;
+      let latitude = coordinates.latitude.toString();
+      let longitude = coordinates.longitude.toString();
+      console.log("Latitude: " + latitude);
+      console.log("Longitude: " + longitude);
+      let endPoint = latitude + "&lon=" + longitude;
+      reverseGeocodingEndPoint += endPoint;
+      // console.log(reverseGeocodingEndPoint);
+      try {
+        let response = await fetch(reverseGeocodingEndPoint);
+        let responseObj = await response.json();
+        let cityName = responseObj[0].name;
+        console.log(cityName);
+        weatherForCity(cityName);
+      } catch (error) {
+        Swal.fire({
+          title: "Not Found",
+          text: "Invalid Latitude & Longitude",
+          icon: "error",
+        });
+        return;
+      }
+    },
+    (errorObj) => {
+      console.log("Error code: " + errorObj.code);
+      console.log("Error Message: " + errorObj.msg);
+    },
+    accurateObj
+  );
+};
