@@ -30,6 +30,7 @@ html {
   background-color: var(--secondary-color);
   margin: 3.5rem;
   box-shadow: 0 1rem 3rem var(--grey-color);
+  overflow: hidden;
 }
 
 .header {
@@ -39,6 +40,7 @@ html {
     url(images/header-bg.jpg) center no-repeat;
   background-size: cover;
   position: relative;
+  perspective: 100rem;
 }
 
 .header-text {
@@ -155,5 +157,35 @@ html {
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+.header-image {
+  width: 35%;
+  animation-name: image-float;
+  animation-duration: 150s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes image-float {
+  0% {
+    transform: translateZ(40rem);
+    opacity: 1;
+  }
+  40% {
+    transform: translateZ(-500rem) translateX(150rem);
+    opacity: 0.8;
+  }
+  70% {
+    transform: translateZ(-1500rem) translateX(800rem);
+    opacity: 0.6;
+  }
+  80% {
+    transform: translateZ(-50rem) translateX(100rem);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateZ(40rem);
+    opacity: 1;
   }
 }
