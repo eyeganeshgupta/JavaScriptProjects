@@ -210,6 +210,7 @@ html {
 .card {
   width: 35rem;
   position: relative;
+  perspective: 150rem;
 }
 
 .card-image {
@@ -223,6 +224,7 @@ html {
   border-radius: 0.3rem;
   position: relative;
   z-index: 10;
+  opacity: 0.9;
 }
 
 .tour-name {
@@ -260,6 +262,8 @@ html {
   border-radius: 0.3rem;
   box-shadow: 0 2rem 4rem #777;
   flex-direction: column;
+  transform: translateZ(-5rem) translateX(3rem);
+  opacity: 0.5;
 }
 
 .tour-price {
