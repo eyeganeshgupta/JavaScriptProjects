@@ -388,6 +388,7 @@ html {
   text-align: center;
   background: url(images/contact-us-bg.png) center no-repeat;
   background-size: cover;
+  animation: contact-bg 15s infinite;
 }
 
 .contact-heading {
@@ -478,4 +479,22 @@ html {
 
 .form-btn:hover {
   background-color: var(--grey-color);
+}
+
+@keyframes contact-bg {
+  0% {
+    background-color: #3d3d3d;
+  }
+  25% {
+    background-color: #ced8e4;
+  }
+  50% {
+    background-color: #1e81f3;
+  }
+  75% {
+    background-color: #ff7842;
+  }
+  100% {
+    background-color: #3d3d3d;
+  }
 }
