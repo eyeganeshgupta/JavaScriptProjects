@@ -65,9 +65,17 @@ html {
   background-color: rgba(255, 255, 255, 0.7);
   position: fixed;
   left: 0;
-  bottom: 0;
+  bottom: -100%;
+  opacity: 0;
   z-index: 300;
   padding: 3.5rem 5.5rem 3.5rem 3.5rem;
+  transition: bottom 0.5s opacity 0.2s;
+}
+
+.change .navbar-wrapper {
+  bottom: 0;
+  opacity: 1;
+  transition: bottom 0.5s opacity 0.2s 0.25s;
 }
 
 .navbar {
@@ -77,12 +85,14 @@ html {
     url(images/navbar-bg.jpg) center no-repeat;
   background-size: cover;
   position: relative;
+  overflow-y: hidden;
 }
 
 .close-navbar-icon {
   position: absolute;
   top: 2.5rem;
   right: 3rem;
+  z-index: 300;
 }
 
 .close-navbar-icon .line {
@@ -97,11 +107,50 @@ html {
   transform: rotate(-40deg);
 }
 
+.nav-list {
+  height: 100%;
+  display: flex;
+}
+
 .nav-link {
   font-size: 3rem;
   font-weight: 700;
   color: var(--white-color);
   text-transform: uppercase;
+  width: 100%;
+  opacity: 0.8;
+  position: relative;
+  top: -100%;
+  transition: all 0.7s;
+}
+
+.change .nav-link {
+  top: 0;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  color: var(--primary-color);
+}
+
+.change .nav-link:nth-child(1) {
+  transition: top 1s 0.4s, opacity 0.3s, color 0.3s;
+}
+
+.change .nav-link:nth-child(2) {
+  transition: top 1s 0.6s, opacity 0.3s, color 0.3s;
+}
+
+.change .nav-link:nth-child(3) {
+  transition: top 1s 0.8s, opacity 0.3s, color 0.3s;
+}
+
+.change .nav-link:nth-child(4) {
+  transition: top 1s 1s, opacity 0.3s, color 0.3s;
+}
+
+.change .nav-link:nth-child(5) {
+  transition: top 1s 1.2s, opacity 0.3s, color 0.3s;
 }
 
 .header {
