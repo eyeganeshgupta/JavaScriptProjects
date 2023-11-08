@@ -737,3 +737,35 @@ html {
     margin: 1rem 0;
   }
 }
+
+@media (max-width: 650px) {
+  .container {
+    margin: 0;
+  }
+
+  .open-navbar-icon {
+    top: 2.5rem;
+    left: 2.5rem;
+  }
+
+  .navbar-wrapper {
+    padding: 0;
+  }
+
+  .close-navbar-icon {
+    right: 4rem;
+  }
+
+  .header {
+    height: 100vh;
+  }
+
+  .contact-heading {
+    font-size: 6rem;
+  }
+
+  .contact-form {
+    padding: 2rem;
+    height: 40rem;
+  }
+}
