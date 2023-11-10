@@ -769,3 +769,9 @@ html {
     height: 40rem;
   }
 }
+
+@media (max-width: 500px) {
+  html {
+    font-size: 45%;
+  }
+}

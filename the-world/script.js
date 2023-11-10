@@ -8,8 +8,6 @@ document.querySelector(".close-navbar-icon").addEventListener("click", () => {
   conatiner.classList.remove("change");
 });
 
-
-
 const colors = ["#6495ed", "#7fffd4", "#ffa07a", "#f08080", "#afeeee"];
 
 let itr = 0;
