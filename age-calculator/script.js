@@ -39,6 +39,8 @@ document.querySelector(".btn").addEventListener("click", () => {
     differenceMonth = 11;
     differenceYear--;
   }
+
+  result.innerHTML = `You are <span>${differenceYear}</span> years, <span>${differenceMonth}</span> months and <span>${differenceDay}</span> days old.`;
 });
 
 function getDaysInMonth(year, month) {
