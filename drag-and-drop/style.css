@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Ubuntu&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
