@@ -47,6 +47,30 @@ function createList() {
   addEventListeners();
 }
 
+function dragStart() {
+  dragStartIndex = Number(this.closest("li").getAttribute("data-index"));
+  console.log(dragStartIndex);
+}
+
+function dragEnter() {
+  this.classList.add("over");
+}
+
+function dragLeave() {
+  this.classList.remove("over");
+}
+
+function dragOver(event) {
+  event.preventDefault();
+}
+
+function dragDrop() {
+  const dragEndIndex = Number(this.getAttribute("data-index"));
+  swapItems(dragStartIndex, dragEndIndex);
+
+  this.classList.remove("over");
+}
+
 function addEventListeners() {
   const draggables = document.querySelectorAll(".draggable");
   const dragListItems = document.querySelectorAll(".draggable-list li");
