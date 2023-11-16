@@ -5,6 +5,12 @@ const more = document.getElementById("more");
 
 const endPoint = "https://api.lyrics.ovh";
 
+function searchSongs(searchTerm) {
+  fetch(`${endPoint}/suggest/${term}`)
+    .then((response) => response.json)
+    .then((data) => console.log(data));
+}
+
 form.addEventListener("submit", (eventObj) => {
   eventObj.preventDefault();
   const searchTerm = search.ariaValueMax.trim();
