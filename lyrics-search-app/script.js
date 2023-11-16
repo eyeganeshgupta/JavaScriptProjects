@@ -5,10 +5,12 @@ const more = document.getElementById("more");
 
 const endPoint = "https://api.lyrics.ovh";
 
-function searchSongs(searchTerm) {
-  fetch(`${endPoint}/suggest/${term}`)
-    .then((response) => response.json)
-    .then((data) => console.log(data));
+async function searchSongs(searchTerm) {
+  /*
+  fetch(`${endPoint}/suggest/${term}`).then((response) => response.json).then((data) => console.log(data));
+  */
+  const response = await fetch(`${endPoint}/suggest/${term}`);
+  const data = await response.json();
 }
 
 form.addEventListener("submit", (eventObj) => {
