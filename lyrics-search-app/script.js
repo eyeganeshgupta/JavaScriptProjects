@@ -57,6 +57,19 @@ async function searchSongs(searchTerm) {
   showData(data);
 }
 
+// ! Get lyrics for song
+async function getLyrics(artist, songTitle) {
+  const res = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
+  const data = await res.json();
+
+  const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, "<br>");
+
+  result.innerHTML = `<h2><strong>${artist}</strong> - ${songTitle}</h2>
+  <span>${lyrics}</span>`;
+
+  more.innerHTML = "";
+}
+
 // ! event listener
 form.addEventListener("submit", (eventObj) => {
   eventObj.preventDefault();
@@ -68,7 +81,7 @@ form.addEventListener("submit", (eventObj) => {
   }
 });
 
-// Get lyrics button click
+// ! Get lyrics button click
 result.addEventListener("click", (e) => {
   const clickedEl = e.target;
   if (clickedEl.tagName === "BUTTON") {
