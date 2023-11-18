@@ -51,7 +51,7 @@ async function searchSongs(searchTerm) {
   /*
   fetch(`${endPoint}/suggest/${term}`).then((response) => response.json).then((data) => console.log(data));
   */
-  const response = await fetch(`${endPoint}/suggest/${term}`);
+  const response = await fetch(`${endPoint}/suggest/${searchTerm}`);
   const data = await response.json();
 
   showData(data);
@@ -73,7 +73,7 @@ async function getLyrics(artist, songTitle) {
 // ! event listener
 form.addEventListener("submit", (eventObj) => {
   eventObj.preventDefault();
-  const searchTerm = search.ariaValueMax.trim();
+  const searchTerm = search?.value?.trim();
   if (!searchTerm) {
     alert("Please type in a search term");
   } else {
