@@ -59,10 +59,12 @@ async function searchSongs(searchTerm) {
 
 // ! Get lyrics for song
 async function getLyrics(artist, songTitle) {
-  const res = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
+  const res = await fetch(`${endPoint}/v1/${artist}/${songTitle}`);
   const data = await res.json();
 
-  const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, "<br>");
+  console.log(data);
+
+  const lyrics = data?.lyrics?.replace(/(\r\n|\r|\n)/g, "<br>");
 
   result.innerHTML = `<h2><strong>${artist}</strong> - ${songTitle}</h2>
   <span>${lyrics}</span>`;
