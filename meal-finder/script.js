@@ -121,3 +121,5 @@ function getRandomMeal() {
       addMealToDOM(meal);
     });
 }
+
+random.addEventListener("click", getRandomMeal);
