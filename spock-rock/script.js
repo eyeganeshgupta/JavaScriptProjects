@@ -31,3 +31,12 @@ const choices = {
 let playerScoreNumber = 0;
 let computerScoreNumber = 0;
 let computerChoice = "";
+
+// TODO: Reset all 'selected' icons, remove confetti
+function resetSelected() {
+  allGameIcons.forEach((icon) => {
+    icon.classList.remove("selected");
+  });
+  stopConfetti();
+  removeConfetti();
+}
