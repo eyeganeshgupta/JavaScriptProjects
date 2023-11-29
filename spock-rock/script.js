@@ -52,7 +52,6 @@ function resetAll() {
   resultText.textContent = "";
   resetSelected();
 }
-
 window.resetAll = resetAll;
 
 // TODO: Random computer choice
@@ -68,5 +67,33 @@ function computerRandomChoice() {
     computerChoice = "lizard";
   } else {
     computerChoice = "spock";
+  }
+}
+
+// TODO: Add 'selected' styling & computerChoice
+function displayComputerChoice() {
+  switch (computerChoice) {
+    case "rock":
+      computerRock.classList.add("selected");
+      computerChoiceEl.textContent = " --- Rock";
+      break;
+    case "paper":
+      computerPaper.classList.add("selected");
+      computerChoiceEl.textContent = " --- Paper";
+      break;
+    case "scissors":
+      computerScissors.classList.add("selected");
+      computerChoiceEl.textContent = " --- Scissors";
+      break;
+    case "lizard":
+      computerLizard.classList.add("selected");
+      computerChoiceEl.textContent = " --- Lizard";
+      break;
+    case "spock":
+      computerSpock.classList.add("selected");
+      computerChoiceEl.textContent = " --- Spock";
+      break;
+    default:
+      break;
   }
 }
