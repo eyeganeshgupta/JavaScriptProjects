@@ -116,3 +116,11 @@ function updateScore(playerChoice) {
     }
   }
 }
+
+// TODO: Call functions to process turn
+function checkResult(playerChoice) {
+  resetSelected();
+  computerRandomChoice();
+  displayComputerChoice();
+  updateScore(playerChoice);
+}
