@@ -52,6 +52,7 @@ function resetAll() {
   resultText.textContent = "";
   resetSelected();
 }
+
 window.resetAll = resetAll;
 
 // TODO: Random computer choice
@@ -124,3 +125,38 @@ function checkResult(playerChoice) {
   displayComputerChoice();
   updateScore(playerChoice);
 }
+
+// TODO: Passing player selection value and styling icons
+function select(playerChoice) {
+  checkResult(playerChoice);
+  // Add 'selected' styling & playerChoice
+  switch (playerChoice) {
+    case "rock":
+      playerRock.classList.add("selected");
+      playerChoiceEl.textContent = " --- Rock";
+      break;
+    case "paper":
+      playerPaper.classList.add("selected");
+      playerChoiceEl.textContent = " --- Paper";
+      break;
+    case "scissors":
+      playerScissors.classList.add("selected");
+      playerChoiceEl.textContent = " --- Scissors";
+      break;
+    case "lizard":
+      playerLizard.classList.add("selected");
+      playerChoiceEl.textContent = " --- Lizard";
+      break;
+    case "spock":
+      playerSpock.classList.add("selected");
+      playerChoiceEl.textContent = " --- Spock";
+      break;
+    default:
+      break;
+  }
+}
+
+window.select = select;
+
+// TODO: On startup, set initial values
+resetAll();
