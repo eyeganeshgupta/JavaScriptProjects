@@ -28,3 +28,21 @@ let speedY;
 let speedX;
 let trajectoryX;
 let computerSpeed;
+
+// Change Mobile Settings
+if (isMobile.matches) {
+  speedY = -2;
+  speedX = speedY;
+  computerSpeed = 4;
+} else {
+  speedY = -1;
+  speedX = speedY;
+  computerSpeed = 3;
+}
+
+// Score
+let playerScore = 0;
+let computerScore = 0;
+const winningScore = 7;
+let isGameOver = true;
+let isNewGame = true;
