@@ -81,3 +81,11 @@ function renderCanvas() {
   context.fillText(playerScore, 20, canvas.height / 2 + 50);
   context.fillText(computerScore, 20, canvas.height / 2 - 30);
 }
+
+// Create Canvas Element
+function createCanvas() {
+  canvas.width = width;
+  canvas.height = height;
+  body.appendChild(canvas);
+  renderCanvas();
+}
