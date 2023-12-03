@@ -1,4 +1,4 @@
-// Canvas
+// ! Canvas
 const { body } = document;
 const canvas = document.createElement("canvas");
 const context = canvas.getContext("2d");
@@ -9,7 +9,7 @@ const canvasPosition = screenWidth / 2 - width / 2;
 const isMobile = window.matchMedia("(max-width: 600px)");
 const gameOverEl = document.createElement("div");
 
-// Paddle
+// ! Paddle
 const paddleHeight = 10;
 const paddleWidth = 50;
 const paddleDiff = 25;
@@ -18,18 +18,18 @@ let paddleTopX = 225;
 let playerMoved = false;
 let paddleContact = false;
 
-// Ball
+// ! Ball
 let ballX = 250;
 let ballY = 350;
 const ballRadius = 5;
 
-// Speed
+// ! Speed
 let speedY;
 let speedX;
 let trajectoryX;
 let computerSpeed;
 
-// Change Mobile Settings
+// ! Change Mobile Settings
 if (isMobile.matches) {
   speedY = -2;
   speedX = speedY;
@@ -40,29 +40,29 @@ if (isMobile.matches) {
   computerSpeed = 3;
 }
 
-// Score
+// ! Score
 let playerScore = 0;
 let computerScore = 0;
 const winningScore = 7;
 let isGameOver = true;
 let isNewGame = true;
 
-// Render Everything on Canvas
+// TODO: Render Everything on Canvas
 function renderCanvas() {
-  // Canvas Background
+  // ! Canvas Background
   context.fillStyle = "black";
   context.fillRect(0, 0, width, height);
 
-  // Paddle Color
+  // ! Paddle Color
   context.fillStyle = "white";
 
-  // Player Paddle (Bottom)
+  // ! Player Paddle (Bottom)
   context.fillRect(paddleBottomX, height - 20, paddleWidth, paddleHeight);
 
-  // Computer Paddle (Top)
+  // ! Computer Paddle (Top)
   context.fillRect(paddleTopX, 10, paddleWidth, paddleHeight);
 
-  // Dashed Center Line
+  // ! Dashed Center Line
   context.beginPath();
   context.setLineDash([4]);
   context.moveTo(0, 350);
@@ -70,19 +70,19 @@ function renderCanvas() {
   context.strokeStyle = "grey";
   context.stroke();
 
-  // Ball
+  // ! Ball
   context.beginPath();
   context.arc(ballX, ballY, ballRadius, 2 * Math.PI, false);
   context.fillStyle = "white";
   context.fill();
 
-  // Score
+  // ! Score
   context.font = "32px Courier New";
   context.fillText(playerScore, 20, canvas.height / 2 + 50);
   context.fillText(computerScore, 20, canvas.height / 2 - 30);
 }
 
-// Create Canvas Element
+// TODO: Create Canvas Element
 function createCanvas() {
   canvas.width = width;
   canvas.height = height;
@@ -90,7 +90,7 @@ function createCanvas() {
   renderCanvas();
 }
 
-// Reset Ball to Center
+// TODO: Reset Ball to Center
 function ballReset() {
   ballX = width / 2;
   ballY = height / 2;
@@ -98,7 +98,7 @@ function ballReset() {
   paddleContact = false;
 }
 
-// Adjust Ball Movement
+// TODO: Adjust Ball Movement
 function ballMove() {
   // Vertical Speed
   ballY += -speedY;
