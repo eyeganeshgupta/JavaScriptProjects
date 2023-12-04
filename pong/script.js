@@ -159,3 +159,14 @@ function ballBoundaries() {
     }
   }
 }
+
+// TODO: Computer Movement
+function computerAI() {
+  if (playerMoved) {
+    if (paddleTopX + paddleDiff < ballX) {
+      paddleTopX += computerSpeed;
+    } else {
+      paddleTopX -= computerSpeed;
+    }
+  }
+}
