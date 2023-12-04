@@ -107,3 +107,55 @@ function ballMove() {
     ballX += speedX;
   }
 }
+
+// TODO: Determine What Ball Bounces Off, Score Points, Reset Ball
+function ballBoundaries() {
+  // ! Bounce off Left Wall
+  if (ballX < 0 && speedX < 0) {
+    speedX = -speedX;
+  }
+  // ! Bounce off Right Wall
+  if (ballX > width && speedX > 0) {
+    speedX = -speedX;
+  }
+  // ! Bounce off player paddle (bottom)
+  if (ballY > height - paddleDiff) {
+    if (ballX > paddleBottomX && ballX < paddleBottomX + paddleWidth) {
+      paddleContact = true;
+      // TODO: Add Speed on Hit
+      if (playerMoved) {
+        speedY -= 1;
+        // * Max Speed
+        if (speedY < -5) {
+          speedY = -5;
+          computerSpeed = 6;
+        }
+      }
+      speedY = -speedY;
+      trajectoryX = ballX - (paddleBottomX + paddleDiff);
+      speedX = trajectoryX * 0.3;
+    } else if (ballY > height) {
+      // TODO: Reset Ball, add to Computer Score
+      ballReset();
+      computerScore++;
+    }
+  }
+  // ! Bounce off computer paddle (top)
+  if (ballY < paddleDiff) {
+    if (ballX > paddleTopX && ballX < paddleTopX + paddleWidth) {
+      // TODO: Add Speed on Hit
+      if (playerMoved) {
+        speedY += 1;
+        // ! Max Speed
+        if (speedY > 5) {
+          speedY = 5;
+        }
+      }
+      speedY = -speedY;
+    } else if (ballY < 0) {
+      // TODO: Reset Ball, add to Player Score
+      ballReset();
+      playerScore++;
+    }
+  }
+}
