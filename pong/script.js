@@ -198,3 +198,15 @@ function gameOver() {
     showGameOverEl(winner);
   }
 }
+
+// TODO: Called Every Frame
+function animate() {
+  renderCanvas();
+  ballMove();
+  ballBoundaries();
+  computerAI();
+  gameOver();
+  if (!isGameOver) {
+    window.requestAnimationFrame(animate);
+  }
+}
