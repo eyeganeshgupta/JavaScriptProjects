@@ -210,3 +210,34 @@ function animate() {
     window.requestAnimationFrame(animate);
   }
 }
+
+// TODO: Start Game, Reset Everything
+function startGame() {
+  if (isGameOver && !isNewGame) {
+    body.removeChild(gameOverEl);
+    canvas.hidden = false;
+  }
+  isGameOver = false;
+  isNewGame = false;
+  playerScore = 0;
+  computerScore = 0;
+  ballReset();
+  createCanvas();
+  animate();
+  canvas.addEventListener("mousemove", (e) => {
+    playerMoved = true;
+    // ! Compensate for canvas being centered
+    paddleBottomX = e.clientX - canvasPosition - paddleDiff;
+    if (paddleBottomX < paddleDiff) {
+      paddleBottomX = 0;
+    }
+    if (paddleBottomX > width - paddleWidth) {
+      paddleBottomX = width - paddleWidth;
+    }
+    // * Hide Cursor
+    canvas.style.cursor = "none";
+  });
+}
+
+// TODO: On Load
+startGame();
