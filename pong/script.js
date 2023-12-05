@@ -188,3 +188,13 @@ function showGameOverEl(winner) {
   gameOverEl.append(title, playAgainBtn);
   body.appendChild(gameOverEl);
 }
+
+// TODO: Check If One Player Has Winning Score, If They Do, End Game
+function gameOver() {
+  if (playerScore === winningScore || computerScore === winningScore) {
+    isGameOver = true;
+    // Set Winner
+    const winner = playerScore === winningScore ? "Player 1" : "Computer";
+    showGameOverEl(winner);
+  }
+}
