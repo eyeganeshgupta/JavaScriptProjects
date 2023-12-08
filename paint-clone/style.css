@@ -20,3 +20,32 @@ body {
   display: flex;
   justify-content: center;
 }
+
+/* Font Awesome Icons */
+.fas,
+.far {
+  font-size: 25px;
+  position: relative;
+  top: 5px;
+  background-color: rgb(82, 82, 82);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  width: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.fas:hover,
+.far:hover {
+  filter: brightness(90%);
+}
+
+.fa-fill-drip {
+  cursor: default;
+}
+
+.fa-undo-alt:hover,
+.fa-trash-alt:hover {
+  color: rgb(223, 37, 37);
+}
