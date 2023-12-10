@@ -50,3 +50,13 @@ bucketColorBtn.addEventListener("change", () => {
   createCanvas();
   restoreCanvas();
 });
+
+// Eraser
+eraser.addEventListener("click", () => {
+  isEraser = true;
+  brushIcon.style.color = "white";
+  eraser.style.color = "black";
+  activeToolEl.textContent = "Eraser";
+  currentColor = bucketColor;
+  currentSize = 50;
+});
