@@ -11,3 +11,14 @@ const loadStorageBtn = document.getElementById("load-storage");
 const clearStorageBtn = document.getElementById("clear-storage");
 const downloadBtn = document.getElementById("download");
 const { body } = document;
+
+// Global Variables
+const canvas = document.createElement("canvas");
+canvas.id = "canvas";
+const context = canvas.getContext("2d");
+let currentSize = 10;
+let bucketColor = "#FFFFFF";
+let currentColor = "#A51DAB";
+let isEraser = false;
+let isMouseDown = false;
+let drawnArray = [];
