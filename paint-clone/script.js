@@ -22,3 +22,12 @@ let currentColor = "#A51DAB";
 let isEraser = false;
 let isMouseDown = false;
 let drawnArray = [];
+
+// Formatting Brush Size
+function displayBrushSize() {
+  if (brushSlider.value < 10) {
+    brushSize.textContent = `0${brushSlider.value}`;
+  } else {
+    brushSize.textContent = brushSlider.value;
+  }
+}
