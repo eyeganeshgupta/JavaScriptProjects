@@ -31,3 +31,22 @@ function displayBrushSize() {
     brushSize.textContent = brushSlider.value;
   }
 }
+
+// Setting Brush Size
+brushSlider.addEventListener("change", () => {
+  currentSize = brushSlider.value;
+  displayBrushSize();
+});
+
+// Setting Brush Color
+brushColorBtn.addEventListener("change", () => {
+  isEraser = false;
+  currentColor = `#${brushColorBtn.value}`;
+});
+
+// Setting Background Color
+bucketColorBtn.addEventListener("change", () => {
+  bucketColor = `#${bucketColorBtn.value}`;
+  createCanvas();
+  restoreCanvas();
+});
