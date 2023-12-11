@@ -82,3 +82,12 @@ function createCanvas() {
   body.appendChild(canvas);
   switchToBrush();
 }
+
+// Clear Canvas
+clearCanvasBtn.addEventListener("click", () => {
+  createCanvas();
+  drawnArray = [];
+  // Active Tool
+  activeToolEl.textContent = "Canvas Cleared";
+  setTimeout(switchToBrush, 1500);
+});
