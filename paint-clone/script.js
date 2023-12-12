@@ -129,3 +129,14 @@ function getMousePosition(event) {
     y: event.clientY - boundaries.top,
   };
 }
+
+// Mouse Down
+canvas.addEventListener("mousedown", (event) => {
+  isMouseDown = true;
+  const currentPosition = getMousePosition(event);
+  context.moveTo(currentPosition.x, currentPosition.y);
+  context.beginPath();
+  context.lineWidth = currentSize;
+  context.lineCap = "round";
+  context.strokeStyle = currentColor;
+});
