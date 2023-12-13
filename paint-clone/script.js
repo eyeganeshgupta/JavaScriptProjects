@@ -193,3 +193,9 @@ clearStorageBtn.addEventListener("click", () => {
   activeToolEl.textContent = "Local Storage Cleared";
   setTimeout(switchToBrush, 1500);
 });
+
+// Event Listener
+brushIcon.addEventListener("click", switchToBrush);
+
+// On Load
+createCanvas();
