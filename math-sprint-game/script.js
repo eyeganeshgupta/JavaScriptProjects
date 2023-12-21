@@ -104,3 +104,17 @@ function showScorePage() {
   gamePage.hidden = true;
   scorePage.hidden = false;
 }
+
+// Format & Display Time in DOM
+function scoresToDOM() {
+  finalTimeDisplay = finalTime.toFixed(1);
+  baseTime = timePlayed.toFixed(1);
+  penaltyTime = penaltyTime.toFixed(1);
+  baseTimeEl.textContent = `Base Time: ${baseTime}s`;
+  penaltyTimeEl.textContent = `Penalty: +${penaltyTime}s`;
+  finalTimeEl.textContent = `${finalTimeDisplay}s`;
+  updateBestScore();
+  // Scroll to Top, go to Score Page
+  itemContainer.scrollTo({ top: 0, behavior: "instant" });
+  showScorePage();
+}
