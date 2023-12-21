@@ -83,3 +83,14 @@ function updateBestScore() {
   // Save to Local Storage
   localStorage.setItem("bestScores", JSON.stringify(bestScoreArray));
 }
+
+// Reset Game
+function playAgain() {
+  gamePage.addEventListener("click", startTimer);
+  scorePage.hidden = true;
+  splashPage.hidden = false;
+  equationsArray = [];
+  playerGuessArray = [];
+  valueY = 0;
+  playAgainBtn.hidden = true;
+}
