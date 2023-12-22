@@ -161,3 +161,14 @@ function startTimer() {
   timer = setInterval(addTime, 100);
   gamePage.removeEventListener("click", startTimer);
 }
+
+// Scroll, Store user selection in playerGuessArray
+function select(guessedTrue) {
+  // Scroll 80 more pixels
+  valueY += 80;
+  itemContainer.scroll(0, valueY);
+  // Add player guess to array
+  return guessedTrue
+    ? playerGuessArray.push("true")
+    : playerGuessArray.push("false");
+}
