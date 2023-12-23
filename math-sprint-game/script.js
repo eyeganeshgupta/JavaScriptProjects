@@ -254,3 +254,17 @@ function populateGamePage() {
   bottomSpacer.classList.add("height-500");
   itemContainer.appendChild(bottomSpacer);
 }
+
+// Displays 3, 2, 1, GO!
+function countdownStart() {
+  countdown.textContent = "3";
+  setTimeout(() => {
+    countdown.textContent = "2";
+  }, 1000);
+  setTimeout(() => {
+    countdown.textContent = "1";
+  }, 2000);
+  setTimeout(() => {
+    countdown.textContent = "GO!";
+  }, 3000);
+}
