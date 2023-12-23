@@ -268,3 +268,12 @@ function countdownStart() {
     countdown.textContent = "GO!";
   }, 3000);
 }
+
+// Navigate from Splash Page to CountdownPage to Game Page
+function showCountdown() {
+  countdownPage.hidden = false;
+  splashPage.hidden = true;
+  countdownStart();
+  populateGamePage();
+  setTimeout(showGamePage, 4000);
+}
