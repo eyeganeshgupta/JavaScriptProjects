@@ -298,3 +298,10 @@ function selectQuestionAmount(e) {
     showCountdown();
   }
 }
+
+// Event Listeners
+gamePage.addEventListener("click", startTimer);
+startForm.addEventListener("submit", selectQuestionAmount);
+
+// On Load
+getSavedBestScores();
