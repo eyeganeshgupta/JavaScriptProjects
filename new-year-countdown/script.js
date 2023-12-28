@@ -35,3 +35,6 @@ setTimeout(() => {
   loading.remove();
   countdown.style.display = "flex";
 }, 1000);
+
+// Run every second
+setInterval(updateCountdown, 1000);
